@@ -9,15 +9,16 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Wissel donkere modus">
-                <span class="toggle-icon">🌙</span>
+                <i class="mdi mdi-weather-night toggle-icon" aria-hidden="true"></i>
             </button>
-            <h1>🎧 Audiotour</h1>
+            <h1><i class="mdi mdi-headphones" aria-hidden="true"></i> Audiotour</h1>
             <p class="subtitle">Impeesa Museum</p>
         </header>
 
@@ -29,12 +30,12 @@
                     
                     <div class="tour-buttons">
                         <a href="tour.html?tour=B" class="btn btn-primary btn-large">
-                            <span class="btn-icon">🎷</span>
+                            <i class="mdi mdi-music-note btn-icon" aria-hidden="true"></i>
                             <span class="btn-text">Roaring Twenties</span>
                             <span class="btn-desc">Geschiedenis & Cultuur</span>
                         </a>
                         <a href="tour.html?tour=A" class="btn btn-primary btn-large">
-                            <span class="btn-icon">⚜️</span>
+                            <i class="mdi mdi-crown btn-icon" aria-hidden="true"></i>
                             <span class="btn-text">Impeesa</span>
                             <span class="btn-desc">100 jaar Scouting</span>
                         </a>
@@ -45,7 +46,7 @@
                     </div>
 
                     <button id="startScanner" class="btn btn-secondary">
-                        <span class="btn-icon">📷</span>
+                        <i class="mdi mdi-qrcode-scan btn-icon" aria-hidden="true"></i>
                         <span class="btn-text">Scan QR-code</span>
                     </button>
                 </div>
@@ -60,7 +61,7 @@
                     <div id="qr-reader"></div>
                     
                     <button id="stopScanner" class="btn btn-secondary">
-                        <span class="btn-icon">✕</span>
+                        <i class="mdi mdi-close btn-icon" aria-hidden="true"></i>
                         <span class="btn-text">Annuleren</span>
                     </button>
                 </div>

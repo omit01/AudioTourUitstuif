@@ -9,13 +9,14 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container player-page">
         <header>
             <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Wissel donkere modus">
-                <span class="toggle-icon">🌙</span>
+                <i class="mdi mdi-weather-night toggle-icon" aria-hidden="true"></i>
             </button>
             <a href="index.html" class="back-link">← Terug</a>
             <h1 id="tourTitle">Tour</h1>
@@ -25,7 +26,7 @@
             <section class="player-section">
                 <!-- Track info -->
                 <div class="track-info">
-                    <div class="track-icon" id="trackIcon">🎧</div>
+                    <i class="track-icon mdi mdi-headphones" id="trackIcon" aria-hidden="true"></i>
                     <h2 id="trackTitle">Laden...</h2>
                     <p id="trackDescription" class="track-desc"></p>
                 </div>
@@ -45,17 +46,17 @@
                 <!-- Audio controls -->
                 <div class="controls">
                     <button id="stopBtn" class="btn-control btn-stop" aria-label="Stop">
-                        <span class="control-icon">⏹</span>
+                        <i class="mdi mdi-stop control-icon" aria-hidden="true"></i>
                         <span class="control-label">Stop</span>
                     </button>
                     
                     <button id="playPauseBtn" class="btn-control btn-play-pause" aria-label="Afspelen">
-                        <span class="control-icon" id="playPauseIcon">▶</span>
+                        <i id="playPauseIcon" class="mdi mdi-play control-icon" aria-hidden="true"></i>
                         <span class="control-label" id="playPauseLabel">Afspelen</span>
                     </button>
                     
                     <button id="replayBtn" class="btn-control btn-replay" aria-label="Opnieuw">
-                        <span class="control-icon">↻</span>
+                        <i class="mdi mdi-replay control-icon" aria-hidden="true"></i>
                         <span class="control-label">Opnieuw</span>
                     </button>
                 </div>
@@ -78,7 +79,7 @@
             <!-- QR Scanner (voor in-tour scanning) -->
             <section class="inline-scanner">
                 <button id="scanNextBtn" class="btn btn-secondary">
-                    <span class="btn-icon">📷</span>
+                    <i class="mdi mdi-qrcode-scan btn-icon" aria-hidden="true"></i>
                     <span class="btn-text">Scan volgende QR-code</span>
                 </button>
                 <div id="inlineQrReader" class="inline-qr-reader" style="display: none;"></div>

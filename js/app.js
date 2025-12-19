@@ -72,7 +72,9 @@ class App {
     updateDarkModeIcon(isDark) {
         const icon = document.querySelector('.dark-mode-toggle .toggle-icon');
         if (icon) {
-            icon.textContent = isDark ? '☀️' : '🌙';
+            // Ensure MDI classes are toggled rather than inserting text
+            icon.classList.remove('mdi-weather-night', 'mdi-white-balance-sunny');
+            icon.classList.add(isDark ? 'mdi-white-balance-sunny' : 'mdi-weather-night');
         }
     }
     

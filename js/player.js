@@ -89,7 +89,7 @@ class AudioPlayer {
         return {
             'A': {
             name: 'Scouting Impeesa',
-            icon: '⚜️',
+            iconClass: 'mdi-tent',
             tracks: [
                 { id: 1, title: 'Naam', description: 'Introductie van de audiotour en de betekenis van Scouting Impeesa in Amersfoort.', file: 'assets/audio/tourA/track01.mp3' },
                 { id: 2, title: 'Troephuizen', description: 'Een kijkje in de troephuizen: het hart van de groep en de plek waar scouts samenkomen.', file: 'assets/audio/tourA/track02.mp3' },
@@ -101,7 +101,7 @@ class AudioPlayer {
             },
             'B': {
             name: 'Roaring Twenties',
-            icon: '🎷',
+            iconClass: 'mdi-music-note',
             tracks: [
                 { id: 1, title: 'Auto', description: 'De opkomst van de auto in de jaren 20 van de 19e eeuw en de impact op mobiliteit en samenleving.', file: 'assets/audio/tourB/track01.mp3' },
                 { id: 2, title: 'Vliegen', description: 'De eerste stappen in de luchtvaart en hoe vliegen het wereldbeeld veranderde in de jaren 20.', file: 'assets/audio/tourB/track02.mp3' },
@@ -155,7 +155,11 @@ class AudioPlayer {
         // Update track info
         if (this.trackTitle) this.trackTitle.textContent = track.title;
         if (this.trackDescription) this.trackDescription.textContent = track.description;
-        if (this.trackIcon && this.currentTour) this.trackIcon.textContent = this.currentTour.icon;
+        if (this.trackIcon && this.currentTour) {
+            // Set MDI class for the track icon
+            this.trackIcon.className = `track-icon mdi ${this.currentTour.iconClass}`;
+            this.trackIcon.setAttribute('aria-hidden', 'true');
+        }
         
         // Update track counter
         if (this.trackCounter) {
@@ -256,7 +260,9 @@ class AudioPlayer {
     
     updatePlayPauseButton() {
         if (this.playPauseIcon) {
-            this.playPauseIcon.textContent = this.isPlaying ? '⏸' : '▶';
+            // Toggle MDI classes for play/pause
+            this.playPauseIcon.classList.remove('mdi-play', 'mdi-pause');
+            this.playPauseIcon.classList.add(this.isPlaying ? 'mdi-pause' : 'mdi-play');
         }
         if (this.playPauseLabel) {
             this.playPauseLabel.textContent = this.isPlaying ? 'Pauze' : 'Afspelen';
