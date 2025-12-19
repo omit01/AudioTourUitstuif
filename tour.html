@@ -92,6 +92,21 @@
 
         <!-- Hidden audio element -->
         <audio id="audioPlayer" preload="metadata"></audio>
+
+        <!-- Modal scanner overlay -->
+        <div id="modalScanner" class="modal-scanner" aria-hidden="true" role="dialog" aria-label="QR Scanner">
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+            <div class="modal-content">
+                <button id="modalClose" class="modal-close" aria-label="Sluit scanner">
+                    <i class="mdi mdi-close"></i>
+                </button>
+                <h3>Scan de QR-code</h3>
+                <div id="modalQrReader" class="modal-qr-reader"></div>
+                <div class="modal-actions">
+                    <button id="modalCancel" class="btn btn-secondary">Annuleren</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- html5-qrcode library -->

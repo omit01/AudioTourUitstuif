@@ -371,6 +371,22 @@ main {
     gap:var(--spacing-sm);
 }
 
+/* Hide html5-qrcode default camera controls */
+#modalQrReader button,
+#modalQrReader select,
+#qr-reader button,
+#qr-reader select,
+#inlineQrReader button,
+#inlineQrReader select {
+    display: none !important;
+}
+
+#modalQrReader__dashboard,
+#qr-reader__dashboard,
+#inlineQrReader__dashboard {
+    display: none !important;
+}
+
 /* ========================================
    Audio Player Styles
 ======================================== */

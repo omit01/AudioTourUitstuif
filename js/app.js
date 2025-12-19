@@ -29,10 +29,10 @@ class App {
             stopScannerBtn.addEventListener('click', () => this.hideScanner());
         }
         
-        // Tour page - inline scanner
+        // Tour page - modal scanner
         const scanNextBtn = document.getElementById('scanNextBtn');
         if (scanNextBtn) {
-            scanNextBtn.addEventListener('click', () => this.toggleInlineScanner());
+            scanNextBtn.addEventListener('click', () => this.showScanner());
         }
         
         // Dark mode toggle
