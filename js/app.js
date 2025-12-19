@@ -90,6 +90,41 @@ class App {
     }
     
     async showScanner() {
+        // Open modal scanner if available, otherwise fallback to scanner section
+        const modal = document.getElementById('modalScanner');
+        if (modal) {
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            const readerId = 'modalQrReader';
+            if (!this.scanner) {
+                this.scanner = new QRScanner(readerId, {
+                    onScanSuccess: (text, result) => {
+                        this.handleScanResult(text, result);
+                        this.hideScanner();
+                    }
+                });
+            } else if (this.scanner.scanner && this.scanner.scanner.clear) {
+                // if previously used with different element, recreate
+                await this.scanner.stop();
+                this.scanner = new QRScanner(readerId, {
+                    onScanSuccess: (text, result) => {
+                        this.handleScanResult(text, result);
+                        this.hideScanner();
+                    }
+                });
+            }
+
+            // start scanner
+            await this.scanner.start();
+
+            // hook modal close buttons
+            document.getElementById('modalClose')?.addEventListener('click', () => this.hideScanner());
+            document.getElementById('modalCancel')?.addEventListener('click', () => this.hideScanner());
+            document.getElementById('modalBackdrop')?.addEventListener('click', () => this.hideScanner());
+            return;
+        }
+
+        // fallback to in-page scanner
         this.showScreen('scanner');
         
         if (!this.scanner) {
@@ -102,9 +137,19 @@ class App {
     }
     
     async hideScanner() {
+        // Close modal if present
+        const modal = document.getElementById('modalScanner');
+        if (modal) {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
         if (this.scanner) {
             await this.scanner.stop();
+            this.scanner = null;
         }
+
+        // fallback: show welcome screen (if using in-page scanner)
         this.showScreen('welcome');
     }
     
