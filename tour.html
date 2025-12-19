@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a5f7a">
+    <meta name="description" content="Audiotour - Luister naar het verhaal">
+    <title>Audiotour - Afspelen</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container player-page">
+        <header>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Wissel donkere modus">
+                <span class="toggle-icon">🌙</span>
+            </button>
+            <a href="index.html" class="back-link">← Terug</a>
+            <h1 id="tourTitle">Tour</h1>
+        </header>
+
+        <main>
+            <section class="player-section">
+                <!-- Track info -->
+                <div class="track-info">
+                    <div class="track-icon" id="trackIcon">🎧</div>
+                    <h2 id="trackTitle">Laden...</h2>
+                    <p id="trackDescription" class="track-desc"></p>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <input type="range" id="progressSlider" class="progress-slider" min="0" max="100" value="0">
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Audio controls -->
+                <div class="controls">
+                    <button id="stopBtn" class="btn-control btn-stop" aria-label="Stop">
+                        <span class="control-icon">⏹</span>
+                        <span class="control-label">Stop</span>
+                    </button>
+                    
+                    <button id="playPauseBtn" class="btn-control btn-play-pause" aria-label="Afspelen">
+                        <span class="control-icon" id="playPauseIcon">▶</span>
+                        <span class="control-label" id="playPauseLabel">Afspelen</span>
+                    </button>
+                    
+                    <button id="replayBtn" class="btn-control btn-replay" aria-label="Opnieuw">
+                        <span class="control-icon">↻</span>
+                        <span class="control-label">Opnieuw</span>
+                    </button>
+                </div>
+
+                <!-- Track navigation (optional, for multi-track tours) -->
+                <div class="track-nav" id="trackNav" style="display: none;">
+                    <button id="prevTrack" class="btn btn-nav" aria-label="Vorige">
+                        ← Vorige
+                    </button>
+                    <span id="trackCounter" class="track-counter">1 / 5</span>
+                    <button id="nextTrack" class="btn btn-nav" aria-label="Volgende">
+                        Volgende →
+                    </button>
+                </div>
+
+                <!-- Status message -->
+                <div id="statusMessage" class="status-message"></div>
+            </section>
+
+            <!-- QR Scanner (voor in-tour scanning) -->
+            <section class="inline-scanner">
+                <button id="scanNextBtn" class="btn btn-secondary">
+                    <span class="btn-icon">📷</span>
+                    <span class="btn-text">Scan volgende QR-code</span>
+                </button>
+                <div id="inlineQrReader" class="inline-qr-reader" style="display: none;"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>🎧 Koptelefoon aanbevolen</p>
+        </footer>
+
+        <!-- Hidden audio element -->
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+
+    <!-- html5-qrcode library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/qr.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

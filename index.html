@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a5f7a">
+    <meta name="description" content="Audiotour voor het Impeesa Museum">
+    <title>Audiotour - Impeesa Museum</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Wissel donkere modus">
+                <span class="toggle-icon">🌙</span>
+            </button>
+            <h1>🎧 Audiotour</h1>
+            <p class="subtitle">Impeesa Museum</p>
+        </header>
+
+        <main>
+            <!-- Welkomstscherm -->
+            <section id="welcome" class="screen active">
+                <div class="welcome-content">
+                    <p class="intro">Welkom bij de audiotour! Kies hieronder een tour of scan een QR-code in het museum.</p>
+                    
+                    <div class="tour-buttons">
+                        <a href="tour.html?tour=B" class="btn btn-primary btn-large">
+                            <span class="btn-icon">🎷</span>
+                            <span class="btn-text">Roaring Twenties</span>
+                            <span class="btn-desc">Geschiedenis & Cultuur</span>
+                        </a>
+                        <a href="tour.html?tour=A" class="btn btn-primary btn-large">
+                            <span class="btn-icon">⚜️</span>
+                            <span class="btn-text">Impeesa</span>
+                            <span class="btn-desc">100 jaar Scouting</span>
+                        </a>
+                    </div>
+
+                    <div class="divider">
+                        <span>of</span>
+                    </div>
+
+                    <button id="startScanner" class="btn btn-secondary">
+                        <span class="btn-icon">📷</span>
+                        <span class="btn-text">Scan QR-code</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- QR Scanner scherm -->
+            <section id="scanner" class="screen">
+                <div class="scanner-content">
+                    <h2>Scan de QR-code</h2>
+                    <p>Richt je camera op de QR-code</p>
+                    
+                    <div id="qr-reader"></div>
+                    
+                    <button id="stopScanner" class="btn btn-secondary">
+                        <span class="btn-icon">✕</span>
+                        <span class="btn-text">Annuleren</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Zet je koptelefoon op voor de beste ervaring 🎧</p>
+        </footer>
+    </div>
+
+    <!-- html5-qrcode library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="js/qr.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
