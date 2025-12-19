@@ -8,28 +8,32 @@ const AUDIO_CACHE_NAME = 'audiotour-audio-v1';
 
 // Static assets to cache immediately
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/tour.html',
-    '/css/style.css',
-    '/js/app.js',
-    '/js/player.js',
-    '/js/qr.js',
-    '/manifest.json'
+    './',
+    './index.html',
+    './tour.html',
+    './css/style.css',
+    './js/app.js',
+    './js/player.js',
+    './js/qr.js',
+    './manifest.json'
 ];
 
 // Audio files to cache (add your actual audio files here)
 const AUDIO_ASSETS = [
-    '/assets/audio/tourA/track01.mp3',
-    '/assets/audio/tourA/track02.mp3',
-    '/assets/audio/tourA/track03.mp3',
-    '/assets/audio/tourA/track04.mp3',
-    '/assets/audio/tourA/track05.mp3',
-    '/assets/audio/tourB/track01.mp3',
-    '/assets/audio/tourB/track02.mp3',
-    '/assets/audio/tourB/track03.mp3',
-    '/assets/audio/tourB/track04.mp3',
-    '/assets/audio/tourB/track05.mp3'
+    './assets/audio/tourA/track01.mp3',
+    './assets/audio/tourA/track02.mp3',
+    './assets/audio/tourA/track03.mp3',
+    './assets/audio/tourA/track04.mp3',
+    './assets/audio/tourA/track05.mp3',
+    './assets/audio/tourA/track06.mp3',
+    './assets/audio/tourB/track01.mp3',
+    './assets/audio/tourB/track02.mp3',
+    './assets/audio/tourB/track03.mp3',
+    './assets/audio/tourB/track04.mp3',
+    './assets/audio/tourB/track05.mp3',
+    './assets/audio/tourB/track06.mp3',
+    './assets/audio/tourB/track07.mp3',
+    './assets/audio/tourB/track08.mp3'
 ];
 
 // Install event - cache static assets

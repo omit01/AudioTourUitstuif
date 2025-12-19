@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PWA Icon Generator</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #1a5f7a; color: white; border: none; border-radius: 8px; margin: 8px; }
+        .status { padding: 12px; background: #d1ecf1; border-radius: 4px; margin: 12px 0; }
+        canvas { border: 1px solid #ddd; margin: 8px; }
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 20px; }
+        .icon-item { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>🎧 PWA Icon Generator</h1>
+    <p>Klik op de knop om placeholder iconen te genereren voor je PWA.</p>
+    
+    <button onclick="generateIcons()">Genereer Iconen</button>
+    
+    <div id="status" class="status" style="display:none;"></div>
+    
+    <div id="iconGrid" class="icon-grid"></div>
+    
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        
+        function generateIcons() {
+            const grid = document.getElementById('iconGrid');
+            const status = document.getElementById('status');
+            grid.innerHTML = '';
+            status.style.display = 'block';
+            status.innerHTML = 'Genereren...';
+            
+            sizes.forEach(size => {
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                
+                // Background gradient
+                const gradient = ctx.createLinearGradient(0, 0, size, size);
+                gradient.addColorStop(0, '#1a5f7a');
+                gradient.addColorStop(1, '#2d8cb8');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+                
+                // Icon text (headphones emoji or text)
+                ctx.fillStyle = 'white';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.font = `bold ${size * 0.5}px Arial`;
+                ctx.fillText('🎧', size / 2, size / 2);
+                
+                // Convert to blob and download
+                canvas.toBlob(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `icon-${size}.png`;
+                    
+                    // Create visual preview
+                    const item = document.createElement('div');
+                    item.className = 'icon-item';
+                    const img = document.createElement('img');
+                    img.src = url;
+                    img.width = 96;
+                    img.style.borderRadius = '8px';
+                    item.appendChild(img);
+                    const label = document.createElement('div');
+                    label.textContent = `${size}x${size}`;
+                    label.style.fontSize = '12px';
+                    label.style.marginTop = '4px';
+                    item.appendChild(label);
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.textContent = 'Download';
+                    downloadBtn.style.fontSize = '12px';
+                    downloadBtn.style.padding = '4px 8px';
+                    downloadBtn.onclick = () => link.click();
+                    item.appendChild(downloadBtn);
+                    
+                    grid.appendChild(item);
+                }, 'image/png');
+            });
+            
+            status.innerHTML = `✅ ${sizes.length} iconen gegenereerd! Klik op "Download" onder elk icoon.`;
+        }
+    </script>
+</body>
+</html>
